@@ -118,15 +118,11 @@ RAZOR_KEY_SECRET = os.getenv('RAZOR_KEY_SECRET')
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+import dj_database_url
+import os
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'hXuDyBEZVTIBrGweuEjSogPfkdcRxYmy',
-        'HOST': 'tramway.proxy.rlwy.net',  # Update this line
-        'PORT': '34639',  # Use the port from the database URL
-    }
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
 
 
